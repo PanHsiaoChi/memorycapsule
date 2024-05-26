@@ -2,7 +2,6 @@ from flask import Flask
 app = Flask(__name__)
 
 from flask import request, abort
-from linebot import  LineBotApi
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, ConfirmTemplate, ImageSendMessage, TextMessage,  ButtonsTemplate, TextSendMessage, LocationSendMessage, TemplateSendMessage, MessageTemplateAction, URITemplateAction, CarouselTemplate, CarouselColumn, ImageCarouselTemplate, ImageCarouselColumn
