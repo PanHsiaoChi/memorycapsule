@@ -7,8 +7,8 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, ConfirmTemplate, ImageSendMessage, TextMessage,  ButtonsTemplate, TextSendMessage, LocationSendMessage, TemplateSendMessage, MessageTemplateAction, URITemplateAction, CarouselTemplate, CarouselColumn, ImageCarouselTemplate, ImageCarouselColumn
 
 import os
-line_bot_api = LineBotApi('CHANNEL_ACCESS_TOKEN')
-handler = LineBotApi('CHANNEL_SECRET')
+line_bot_api = LineBotApi(os.environ.get('CHANNEL_ACCESS_TOKEN'))
+handler = LineBotApi(os.environ.get('CHANNEL_SECRET'))
 
 @app.route("/callback", methods=['POST'])
 def callback():
