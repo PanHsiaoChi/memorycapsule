@@ -8,7 +8,7 @@ from linebot.models import MessageEvent, ConfirmTemplate, ImageSendMessage, Text
 
 import os
 line_bot_api = LineBotApi(os.environ.get('CHANNEL_ACCESS_TOKEN'))
-handler = LineBotApi(os.environ.get('CHANNEL_SECRET'))
+handler = WebhookHandler(os.environ.get('CHANNEL_SECRET'))
 
 @app.route("/callback", methods=['POST'])
 def callback():
