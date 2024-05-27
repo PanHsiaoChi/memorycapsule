@@ -58,7 +58,7 @@ def handle_message(event):
         sendContact(event)
 
     elif mtext in ['物品']:
-        randomDinner(event)
+        randomRoomColor(event)
 
 def sendHotelIntro(event):  #旅店介紹
     try:
