@@ -5,10 +5,13 @@ from flask import request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, ConfirmTemplate, ImageSendMessage, TextMessage,  ButtonsTemplate, TextSendMessage, LocationSendMessage, TemplateSendMessage, MessageTemplateAction, URITemplateAction, CarouselTemplate, CarouselColumn, ImageCarouselTemplate, ImageCarouselColumn
+import random
 
 import os
 line_bot_api = LineBotApi(os.environ.get('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.environ.get('CHANNEL_SECRET'))
+
+RoomColor = ['入住樓層：1F藍色記憶','入住樓層：2F夕陽的餘暉','入住樓層：3F舊時記憶堂前燕','入住樓層：4F粉色'] 
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -53,6 +56,9 @@ def handle_message(event):
 
     elif mtext == '聯絡我們':
         sendContact(event)
+
+    elif mtext in ['物品']:
+        randomDinner(event)
 
 def sendHotelIntro(event):  #旅店介紹
     try:
@@ -216,6 +222,16 @@ def sendContact(event):  #聯絡我們
         line_bot_api.reply_message(event.reply_token, message)
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
+
+def randomRoomColor(event):
+    try:
+        message = TextSendMessage(
+            text=random.choice(RoomColor)
+        )
+        line_bot_api.reply_message(event.reply_token, message)
+    except:
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
+
 
 if __name__ == '__main__':
     app.run()
