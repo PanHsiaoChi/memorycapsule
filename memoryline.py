@@ -11,7 +11,7 @@ import os
 line_bot_api = LineBotApi(os.environ.get('CHANNEL_ACCESS_TOKEN'))
 handler = WebhookHandler(os.environ.get('CHANNEL_SECRET'))
 
-RoomColor = ['入住樓層：1F藍色記憶','入住樓層：2F夕陽的餘暉','入住樓層：3F舊時記憶堂前燕','入住樓層：4F粉色'] 
+RoomColor = ['入住樓層：1F蔚藍記憶','入住樓層：2F夕陽的餘暉','入住樓層：3F舊時記憶堂前燕','入住樓層：4F粉色夢幻時光'] 
 
 @app.route("/callback", methods=['POST'])
 def callback():
