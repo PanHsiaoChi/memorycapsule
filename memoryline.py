@@ -48,9 +48,6 @@ def handle_message(event):
     elif mtext == '現在':
         sendNow(event)
 
-    elif mtext == '物品':
-        sendThing(event)
-
     elif mtext == '再想想':
         sendNo(event)
 
@@ -173,17 +170,6 @@ def sendNow(event):
         message = TextSendMessage(
             text='在這裡，你印象深刻的物品有什麼呢？\n傳送後，再傳送一則訊息「物品」。',
         )
-        line_bot_api.reply_message(event.reply_token, message)
-    except:
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
-
-def sendThing(event):
-    try:
-        message =[
-        TextSendMessage(
-            text='登記完成。\n感謝您的入住登記。\n希望您在前來記憶旅店的這段時間裡，能夠暫時停下向前的腳步，回頭凝視過去。\n記憶旅店隨時歡迎您再度蒞臨。',
-        )
-        ]
         line_bot_api.reply_message(event.reply_token, message)
     except:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text='發生錯誤！'))
